@@ -1,0 +1,4 @@
+
+public enum HeadacheType {
+	MIGRAINE, CLUSTER, ICE_PICK, TENSION, SINUS, REBOUND
+}
