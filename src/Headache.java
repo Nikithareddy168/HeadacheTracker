@@ -18,5 +18,9 @@ public class Headache {
 		this.sidedness = sidedness; 
 		this.headacheType = headacheType;
 	}
+	
+	public void getAll(){
+		//Output all headache info in a formatted string
+	}
 
 }
