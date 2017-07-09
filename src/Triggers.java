@@ -1,7 +1,7 @@
 
-public class Triggers {
+public class Trigger {
 
-	public Triggers() {
+	public Trigger() {
 		// TODO Auto-generated constructor stub
 	}
 
