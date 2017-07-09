@@ -34,6 +34,22 @@ public class Headache {
 		this.treatment = treatment;
 	}
 	
+	public void getAll(){
+		//Output all headache info in a formatted string
+		System.out.println("Getting Headache info");
+		//Get info from each object headache is composed of
+		getTreatmentInfo(); 
+		System.lineSeparator(); 
+	}
+	
+	//get all info from each treatment type
+	public void getTreatmentInfo(){
+		List<Treatment>tList = getTreatment(); 
+		for(Treatment t : tList){
+			t.getAll();
+		}
+	}
+	
 	public long getDurationHours(){
 		return getStartTime().until(getEndTime(),HOURS); 
 	}
@@ -41,13 +57,13 @@ public class Headache {
 	public long getDurationMinutes(){
 		return getStartTime().until(getEndTime(),MINUTES); 
 	}
-
-
-	public void getAll(){
-		//Output all headache info in a formatted string
-		System.out.println("Getting Headache info");
+	
+	public double getDuration(){
+		return (getStartTime().until(getEndTime(),MINUTES)/60); 
 	}
-
+	
+	//Getters and Setters
+	//Need some abstraction - making new class to handle date/time, severity and painlocation (?), etc. 
 
 	public LocalDate getDate() {
 		return date;
