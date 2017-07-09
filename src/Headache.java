@@ -15,16 +15,14 @@ public class Headache {
 	private Map<String,Integer> severity;
 	private List<Location> painLocation; 
 	private Sidedness sidedness; 
-	private List<HeadacheType> headacheType; 
+	private HeadacheType headacheType; 
 	private List <Trigger> trigger; 
 	private Map<Phase,Symptom> symptom; 
-	private List <Treatment> treatment; 
-	private Phase a; 
-	
+	private List <Treatment> treatment; 	
 
 	
 	public Headache(LocalDate date, LocalTime startTime, LocalTime endTime, Map<String, Integer> severity,
-			List<Location> painLocation, Sidedness sidedness, List<HeadacheType> headacheType, List<Trigger> trigger,
+			List<Location> painLocation, Sidedness sidedness, HeadacheType headacheType, List<Trigger> trigger,
 			Map<Phase,Symptom> symptom, List<Treatment> treatment) {
 		this.date = date;
 		this.startTime = startTime;
@@ -35,19 +33,30 @@ public class Headache {
 		this.headacheType = headacheType;
 		this.trigger = trigger;
 		this.symptom = symptom;
-		this.treatment = treatment;
-		
-		
+		this.treatment = treatment;	
 	}
 	
 	public void getAll(){
 		//Output all headache info in a formatted string
 		System.out.println("\tGetting Headache info");
+		
 		//Get info from each object headache is composed of
-		System.out.println("Date " + getDate().format(DateTimeFormatter.ofPattern("MM-dd-yy")) + 
-				", Start time: " + getStartTime().format(DateTimeFormatter.ofPattern("hh:mm a")) + 
-				", End time: " + getEndTime().format(DateTimeFormatter.ofPattern("hh:mm a")) + ", duration: " + getDuration());
+		System.out.print("Date " + getDate().format(DateTimeFormatter.ofPattern("MM-dd-yy")) + 
+				"; Start time: " + getStartTime().format(DateTimeFormatter.ofPattern("hh:mm a")) + 
+				"; End time: " + getEndTime().format(DateTimeFormatter.ofPattern("hh:mm a")) + "; Duration: " + getDuration()
+				+ "; Headache Type: " + getHeadacheType() + "; Sidedness: " + getSidedness() + "; Pain Location(s): ");
+		
+		for(int i = 0; i < painLocation.size(); i++){
+			System.out.print(painLocation.get(i)); 
+			if(i != painLocation.size() - 1)
+				System.out.print(", ");
+			else
+				System.out.println();
+		}
+		
+		//Get Treatment info 
 		getTreatmentInfo(); 
+		
 		//Get Info for each Phase and Symptom
 		System.out.println("\tGetting Symptom/Phase info");
 		for(Phase p : symptom.keySet()){
@@ -141,16 +150,6 @@ public class Headache {
 	}
 
 
-	public List<HeadacheType> getHeadacheType() {
-		return headacheType;
-	}
-
-
-	public void setHeadacheType(List<HeadacheType> headacheType) {
-		this.headacheType = headacheType;
-	}
-
-
 	public List<Trigger> getTrigger() {
 		return trigger;
 	}
@@ -167,6 +166,22 @@ public class Headache {
 
 	public void setTreatment(List<Treatment> treatment) {
 		this.treatment = treatment;
+	}
+
+	public HeadacheType getHeadacheType() {
+		return headacheType;
+	}
+
+	public void setHeadacheType(HeadacheType headacheType) {
+		this.headacheType = headacheType;
+	}
+
+	public Map<Phase, Symptom> getSymptom() {
+		return symptom;
+	}
+
+	public void setSymptom(Map<Phase, Symptom> symptom) {
+		this.symptom = symptom;
 	}
 
 }

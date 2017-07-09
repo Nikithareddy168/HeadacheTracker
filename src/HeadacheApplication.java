@@ -25,9 +25,15 @@ public class HeadacheApplication {
 		symptoms.put(Phase.POST_DROME, s2); 
 		symptoms.put(Phase.PRO_DROME, s3); 
 		
+		//sidedness and painlocation
+		Sidedness s = Sidedness.BILATERAL; 
+		Location l1 = Location.FRONTAL; 
+		Location l2 = Location.OCCIPITAL; 
+		List<Location> painLocations = new ArrayList<>(Arrays.asList(l1,l2)); 
+		
 		//Headaches
 		Headache h1 = new Headache(LocalDate.now(), LocalTime.of(12, 0), LocalTime.of(15, 30), null,
-				null, null, null, null, symptoms,tList); 
+				painLocations, s, HeadacheType.MIGRAINE, null, symptoms,tList); 
 		List <Headache> hList = new ArrayList <Headache>(); 
 		hList.add(h1); 
 		
