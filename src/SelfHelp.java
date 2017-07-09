@@ -19,7 +19,7 @@ public class SelfHelp extends Treatment{
 		
 		//Format date
 
-		System.out.println("Printing self help info");
+		System.out.println("\tPrinting self help info");
 		System.lineSeparator(); 
 		System.out.println("Selfhelp Method: " + getEffectivity().toString()
 				+ ", " + getTreatmentTimes()); 
