@@ -1,60 +1,34 @@
+import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 
 public class Medication extends Treatment {
 
 	private String medClass; 
 	private double doseTaken; 
+	private LocalTime timeTaken; 
+	public String result;
 	private int initialPain; 
 	private int finalPain; 
-	
-	public Medication(String medicationName, String medClass, double doseTaken, LocalTime timeTaken, LocalTime timeEffective,int initialPain, int finalPain) {
-		super(medicationName, timeTaken, timeEffective); 
+	 ArrayList<String> medctn = new ArrayList();
+	public Medication(String treatmentName, String medClass, double doseTaken, LocalTime timeTaken, int initialPain, int finalPain) {
+		super(treatmentName); 
 		this.medClass = medClass; 
 		this.doseTaken = doseTaken; 
+		this.timeTaken = timeTaken; 
 		this.initialPain = initialPain; 
 		this.finalPain = finalPain; 
 	}
-	
+
 	@Override
 	public void getAll() {
+		// TODO Auto-generated method stub
 		System.out.println("Getting all medication info"); 
 		System.out.println("Medication: " + super.getTreatmentName()
-		+ ", " + getMedClass() + " class" + ", " + getDoseTaken() + " mg" + ", " +
-				getTreatmentTimes());
+		+ ", " + medClass + " class" + ", " + doseTaken + " mg");
 		System.lineSeparator(); 
-	}
-	
-
-	public String getMedClass() {
-		return medClass;
-	}
-
-	public void setMedClass(String medClass) {
-		this.medClass = medClass;
-	}
-
-	public double getDoseTaken() {
-		return doseTaken;
-	}
-
-	public void setDoseTaken(double doseTaken) {
-		this.doseTaken = doseTaken;
-	}
-
-	public int getInitialPain() {
-		return initialPain;
-	}
-
-	public void setInitialPain(int initialPain) {
-		this.initialPain = initialPain;
-	}
-
-	public int getFinalPain() {
-		return finalPain;
-	}
-
-	public void setFinalPain(int finalPain) {
-		this.finalPain = finalPain;
+		/*medctn.add(super.getTreatmentName()+","+medClass+","+""+doseTaken);
+		System.out.println("medctn=================================="+medctn);*/
 	}
 
 }
