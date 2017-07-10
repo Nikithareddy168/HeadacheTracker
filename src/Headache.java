@@ -16,13 +16,13 @@ public class Headache {
 	private List<Location> painLocation; 
 	private Sidedness sidedness; 
 	private HeadacheType headacheType; 
-	private List <Trigger> trigger; 
+	private Map<Trigger, String> trigger; 
 	private Map<Phase,Symptom> symptom; 
 	private List <Treatment> treatment; 	
 
 	
 	public Headache(LocalDate date, LocalTime startTime, LocalTime endTime, Map<String, Integer> severity,
-			List<Location> painLocation, Sidedness sidedness, HeadacheType headacheType, List<Trigger> trigger,
+			List<Location> painLocation, Sidedness sidedness, HeadacheType headacheType, Map<Trigger, String> trigger,
 			Map<Phase,Symptom> symptom, List<Treatment> treatment) {
 	   
 		this.date = date;
@@ -58,13 +58,25 @@ public class Headache {
 		//Get Treatment info 
 		getTreatmentInfo(); 
 		
+		//Get Trigger Info
+		
+		System.out.println("\tGetting Trigger info..");
+		
+		for(Trigger tr : trigger.keySet()){
+		    tr.getAll();
+		    System.out.print(" : ");
+		    System.out.print(trigger.get(tr) + "\n");
+		}
+	
+		
 		//Get Info for each Phase and Symptom
-		System.out.println("\tGetting Symptom/Phase info");
+		System.out.println("\n\tGetting Symptom/Phase info..");
 		for(Phase p : symptom.keySet()){
 			System.out.print(p.toString() + ": ");
 			symptom.get(p).getAll();
 			System.out.println(""); 
 		}
+		
 	}
 	
 	//get all info from each treatment type
@@ -167,13 +179,21 @@ public class Headache {
 	}
 
 
-	public List<Trigger> getTrigger() {
-		return trigger;
+	public String getTrigger() {
+	    String key = null;
+        String value = null;
+        for (Trigger trig: trigger.keySet()){
+
+            key = trig.toString();
+            value = trigger.get(trig).toString();  
+  
+        }
+        return key + " - " + value;
 	}
 
 
-	public void setTrigger(List<Trigger> trigger) {
-		this.trigger = trigger;
+	public void setTrigger(Map<Trigger, String> trigger) {
+	    this.trigger = trigger;
 	}
 
 	public List<Treatment> getTreatment() {
