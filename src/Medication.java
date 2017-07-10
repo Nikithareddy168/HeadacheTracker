@@ -113,7 +113,7 @@ public class Medication extends Treatment {
 		this.finalPain = finalPain;
 	}
 
-	public static Map<String, String> getMedSymmary() {
+	public static void getMedSymmary() {
 		System.out.println("<< Detailed report for Medication >>");
 		System.out.println("===========================================================================================");
 		System.out.println("Medication      Class             Dose       Avg. Severity in Hours   Total doses taken");
@@ -121,6 +121,6 @@ public class Medication extends Treatment {
 	    for (String key : medicinedose.keySet()){
 			System.out.println(" " + key + "      " + medicinedose.get(key));
 		}
-	    return medSummaryValues;
+	   // return medSummaryValues;
 	}
 }
