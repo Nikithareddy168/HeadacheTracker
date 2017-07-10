@@ -12,7 +12,7 @@ public class Headache {
 	private LocalDate date; 
 	private LocalTime startTime; 
 	private LocalTime endTime; 
-	private Map<String,Integer> severity;
+	private Map<String, Integer> severity;
 	private List<Location> painLocation; 
 	private Sidedness sidedness; 
 	private HeadacheType headacheType; 
@@ -24,6 +24,7 @@ public class Headache {
 	public Headache(LocalDate date, LocalTime startTime, LocalTime endTime, Map<String, Integer> severity,
 			List<Location> painLocation, Sidedness sidedness, HeadacheType headacheType, List<Trigger> trigger,
 			Map<Phase,Symptom> symptom, List<Treatment> treatment) {
+	   
 		this.date = date;
 		this.startTime = startTime;
 		this.endTime = endTime;
@@ -38,13 +39,13 @@ public class Headache {
 	
 	public void getAll(){
 		//Output all headache info in a formatted string
-		System.out.println("\tGetting Headache info");
+		System.out.println("\n\tGetting Headache info..");
 		
 		//Get info from each object headache is composed of
 		System.out.print("Date " + getDate().format(DateTimeFormatter.ofPattern("MM-dd-yy")) + 
-				"; Start time: " + getStartTime().format(DateTimeFormatter.ofPattern("hh:mm a")) + 
-				"; End time: " + getEndTime().format(DateTimeFormatter.ofPattern("hh:mm a")) + "; Duration: " + getDuration()
-				+ "; Headache Type: " + getHeadacheType() + "; Sidedness: " + getSidedness() + "; Pain Location(s): ");
+				"\nStart time: " + getStartTime().format(DateTimeFormatter.ofPattern("hh:mm a")) + 
+				"\nEnd time: " + getEndTime().format(DateTimeFormatter.ofPattern("hh:mm a")) + "\nDuration: " + getDuration()
+				+ "\nHeadache Type: " + getHeadacheType() + "\nSeverity: " + getSeverity() + "\nSidedness: " + getSidedness() + "\nPain Location(s): ");
 		
 		for(int i = 0; i < painLocation.size(); i++){
 			System.out.print(painLocation.get(i)); 
@@ -89,13 +90,17 @@ public class Headache {
 	
 	//Getters and Setters
 	//Need more abstraction - making new class to handle date/time, severity and painlocation (?), etc. 
-
+   
 	public LocalDate getDate() {
 		return date;
 	}
 
 
-	public void setDate(LocalDate date) {
+	public void setSeverity(Map<String, Integer> severity) {
+        this.severity = severity;
+    }
+
+    public void setDate(LocalDate date) {
 		this.date = date;
 	}
 
@@ -120,13 +125,25 @@ public class Headache {
 	}
 
 
-	public Map<String, Integer> getSeverity() {
-		return severity;
-	}
+	public String getSeverity() {
+	    String key = null;
+	    String value = null;
+	    String med = null;
+	    for (String note: severity.keySet()){
 
-
-	public void setSeverity(Map<String, Integer> severity) {
-		this.severity = severity;
+            key = note.toString();
+            value = severity.get(note).toString();  
+  
+        }
+	    if(Integer.parseInt(value) > 0 && Integer.parseInt(value) < 4){
+	        med = "No medication";
+	    }
+	    else if(Integer.parseInt(value) > 3 && Integer.parseInt(value) < 7){
+	        med = "Use medium level pain medication plus appropriate symptom medication as needed.";    
+	    }
+	    else 
+	        med = "Use high level pain medication in combination with one or more symptom medications.";
+		return key + " - " + value + ";  " + med;
 	}
 
 

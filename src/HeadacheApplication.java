@@ -16,6 +16,7 @@ public class HeadacheApplication {
 		//Symptoms
 		//Example with single symptom, adding an additional symptom, or using an array to declare a list of symptoms
 		Map<Phase,Symptom> symptoms = new HashMap<Phase,Symptom>(); 
+		Map<String, Integer> severity = new HashMap<String, Integer>(); 
 		Symptom s1 = new Symptom("Sunlight"); 
 		Symptom s2 = new Symptom(DefaultSymptom.LightSensitivity); 
 		s2.addSymptom(DefaultSymptom.Aura); 
@@ -25,14 +26,16 @@ public class HeadacheApplication {
 		symptoms.put(Phase.POST_DROME, s2); 
 		symptoms.put(Phase.PRO_DROME, s3); 
 		
+		severity.put("Medium grade", 5);
 		//sidedness and painlocation
 		Sidedness s = Sidedness.BILATERAL; 
 		Location l1 = Location.FRONTAL; 
 		Location l2 = Location.OCCIPITAL; 
 		List<Location> painLocations = new ArrayList<>(Arrays.asList(l1,l2)); 
 		
+
 		//Headaches
-		Headache h1 = new Headache(LocalDate.now(), LocalTime.of(12, 0), LocalTime.of(15, 30), null,
+		Headache h1 = new Headache(LocalDate.now(), LocalTime.of(12, 0), LocalTime.of(15, 30), severity,
 				painLocations, s, HeadacheType.MIGRAINE, null, symptoms,tList); 
 		List <Headache> hList = new ArrayList <Headache>(); 
 		hList.add(h1); 
