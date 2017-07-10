@@ -17,9 +17,9 @@ public class Medication extends Treatment {
 	
 	@Override
 	public void getAll() {
-		System.out.println("\tGetting all medication info"); 
+		System.out.println("\n\tGetting all medication info.."); 
 		System.out.println("Medication: " + super.getTreatmentName()
-		+ ", " + getMedClass() + " class" + ", " + getDoseTaken() + " mg" + ", " +
+		+ "\n" + getMedClass() + " class" + "\n" + getDoseTaken() + " mg" + "\n" +
 				getTreatmentTimes());
 		System.lineSeparator(); 
 	}

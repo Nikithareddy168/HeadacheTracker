@@ -1,7 +1,7 @@
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
-public class SelfHelp extends Treatment{
+public class SelfHelp extends Treatment {
 	private Effectivity effectivity; 
 	
 	
@@ -19,10 +19,10 @@ public class SelfHelp extends Treatment{
 		
 		//Format date
 
-		System.out.println("\tPrinting self help info");
+		System.out.println("\n\tPrinting self help info..");
 		System.lineSeparator(); 
 		System.out.println("Selfhelp Method: " + getEffectivity().toString()
-				+ ", " + getTreatmentTimes()); 
+				+ "\n" + getTreatmentTimes() + "\n"); 
 		System.lineSeparator(); 
 	}
 
