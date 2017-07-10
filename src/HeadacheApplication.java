@@ -7,10 +7,16 @@ public class HeadacheApplication {
 	public static void main(String[] args){
 		
 		//Treatments
-		Treatment m = new Medication("MaxAlt", "triptan class", 2.0, LocalTime.of(12,50),LocalTime.of(15, 48),7, 2); 
+		Treatment m = new Medication("MaxAlt", "triptan class", 5.0, LocalTime.of(12,50),LocalTime.of(15, 48),7, 2); 
+		Treatment m1 = new Medication("MaxAlt", "triptan class", 5.0, LocalTime.of(12,50),LocalTime.of(15, 48),7, 2);
+		Treatment m2 = new Medication("Anaprox", "NSAID class", 550.0, LocalTime.of(12,50),LocalTime.of(15, 48),7, 2);
+		Treatment m3 = new Medication("Anaprox", "NSAID class", 550.0, LocalTime.of(12,50),LocalTime.of(15, 48),7, 2);
 		Treatment sh = new SelfHelp("Yoga",LocalTime.of(13, 30),LocalTime.of(15, 45),Effectivity.DID_NOT_HELP); 
 		List<Treatment> tList = new ArrayList <Treatment>(); 
 		tList.add(m); 
+		tList.add(m1);
+		tList.add(m2);
+		tList.add(m3);
 		tList.add(sh); 
 		
 		//Symptoms
@@ -43,6 +49,12 @@ public class HeadacheApplication {
 		Patient p1 = new Patient(hList); 
 		p1.getHeadacheInfo();
 		
+		// Medication Summary Report
+		
+		System.out.println("");
+		Medication med;
+		Medication.getMedSymmary();
+		System.out.println("");
 		System.out.println("Done!");
 	
 	}
