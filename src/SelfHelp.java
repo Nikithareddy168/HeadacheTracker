@@ -21,7 +21,7 @@ public class SelfHelp extends Treatment {
 
 		System.out.println("\n\tPrinting self help info..");
 		System.lineSeparator(); 
-		System.out.println("Selfhelp Method: " + getEffectivity().toString()
+		System.out.println("Selfhelp Method: "+ super.getTreatmentName()+"\nEffectivity :"+ getEffectivity().toString()
 				+ "\n" + getTreatmentTimes() + "\n"); 
 		System.lineSeparator(); 
 	}
