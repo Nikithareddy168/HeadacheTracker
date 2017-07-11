@@ -29,6 +29,12 @@ public abstract class Treatment implements Report {
 		return timeTaken; 
 	}
 	
+	//Return string of medication or selfhelp
+	//default to time effective
+	public String averageEffectivity(){
+		return timeEffective.toString(); 
+	}
+	
 	public String getTreatmentTimes(){
 		return "Time started: " + getTimeTaken().format(DateTimeFormatter.ofPattern("hh:mm a")) + 
 		", Time Effective: " + getTimeEffective().format(DateTimeFormatter.ofPattern("hh:mm a"));

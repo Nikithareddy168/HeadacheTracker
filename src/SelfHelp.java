@@ -10,8 +10,8 @@ public class SelfHelp extends Treatment{
 		this.effectivity = effectivity; 
 	}
 	
-	public Effectivity getEffectivity(){
-		return effectivity;
+	public String averageEffectivity(){
+		return effectivity.toString();
 	}
 	
 	
@@ -24,6 +24,14 @@ public class SelfHelp extends Treatment{
 		System.out.println("Selfhelp Method: " + getEffectivity().toString()
 				+ ", " + getTreatmentTimes()); 
 		System.lineSeparator(); 
+	}
+
+	public Effectivity getEffectivity() {
+		return effectivity;
+	}
+
+	public void setEffectivity(Effectivity effectivity) {
+		this.effectivity = effectivity;
 	}
 
 }
