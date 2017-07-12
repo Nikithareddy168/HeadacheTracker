@@ -17,6 +17,7 @@ public class HeadacheApplication {
 		
 		Treatment m = new Medication("MaxAlt", "triptan class", 2.0, LocalTime.of(12,50),LocalTime.of(15, 48),7, 2); 
 		
+		
 		Treatment sh = new SelfHelp("Yoga",LocalTime.of(13, 30),LocalTime.of(15, 45),Effectivity.DID_NOT_HELP); 
 		
 		List<Treatment> tList = new ArrayList <Treatment>(); 
@@ -106,7 +107,14 @@ public class HeadacheApplication {
 		p1.getHeadacheInfo();
 		
 		     
-		getSummaryReport(p1);      
+		getSummaryReport(p1);  
+		
+		System.out.println("");
+		Medication med;
+		Medication.getMedSymmary();
+		System.out.println("");
+		System.out.println("Done!");
+
 	
 	
 	}
