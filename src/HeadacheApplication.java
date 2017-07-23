@@ -60,9 +60,9 @@ public class HeadacheApplication {
 		
 		
 		
-		//sidedness and painlocation
+		//SidednessType and painlocation
 		
-		Sidedness side1 = Sidedness.BILATERAL; 
+		SidednessType side1 = SidednessType.BILATERAL; 
 		
 		Location l1 = Location.FRONTAL; 
 		
@@ -93,7 +93,7 @@ public class HeadacheApplication {
 		
 		painLocations1, side1, HeadacheType.MIGRAINE, triggerMap, symptoms,tList); 
 		
-		Headache h2 = new Headache(LocalDate.now(), LocalTime.of(11, 30), LocalTime.of(20, 0), severity1, painLocations2, Sidedness.BILATERAL, HeadacheType.TENSION, triggerMap, symptoms, tList );
+		Headache h2 = new Headache(LocalDate.now(), LocalTime.of(11, 30), LocalTime.of(20, 0), severity1, painLocations2, SidednessType.BILATERAL, HeadacheType.TENSION, triggerMap, symptoms, tList );
 		
 		List <Headache> hList = new ArrayList <Headache>(); 
 		

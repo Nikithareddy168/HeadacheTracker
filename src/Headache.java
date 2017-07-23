@@ -29,7 +29,7 @@ private Map<String, Integer> severity;
 
 private List<Location> painLocation; 
 
-private Sidedness sidedness; 
+private SidednessType SidednessType; 
 
 private HeadacheType headacheType; 
 
@@ -48,7 +48,7 @@ public float tseverity = 0;
 
 public Headache(LocalDate date, LocalTime startTime, LocalTime endTime, Map<String, Integer> severity,
 
-List<Location> painLocation, Sidedness sidedness, HeadacheType headacheType, Map<Trigger, String> trigger,
+List<Location> painLocation, SidednessType SidednessType, HeadacheType headacheType, Map<Trigger, String> trigger,
 
 Map<Phase,Symptom> symptom, List<Treatment> treatment) {
 
@@ -65,7 +65,7 @@ this.severity = severity;
 
 this.painLocation = painLocation;
 
-this.sidedness = sidedness;
+this.SidednessType = SidednessType;
 
 this.headacheType = headacheType;
 
@@ -93,7 +93,7 @@ System.out.print("Date " + getDate().format(DateTimeFormatter.ofPattern("MM-dd-y
 
 "\nEnd time: " + getEndTime().format(DateTimeFormatter.ofPattern("hh:mm a")) + "\nDuration: " + getDuration()
 
-+ "\nHeadache Type: " + getHeadacheType() + "\nSeverity: " + getSeverity() + "\nSidedness: " + getSidedness() + "\nPain Location(s): ");
++ "\nHeadache Type: " + getHeadacheType() + "\nSeverity: " + getSeverity() + "\nSidednessType: " + getSidednessType() + "\nPain Location(s): ");
 
 
 for(int i = 0; i < painLocation.size(); i++){
@@ -343,9 +343,9 @@ this.painLocation = painLocation;
 
 
 
-public Sidedness getSidedness() {
+public SidednessType getSidednessType() {
 
-return sidedness;
+return SidednessType;
 
 }
 
@@ -353,9 +353,9 @@ return sidedness;
 
 
 
-public void setSidedness(Sidedness sidedness) {
+public void setSidednessType(SidednessType SidednessType) {
 
-this.sidedness = sidedness;
+this.SidednessType = SidednessType;
 
 }
 
