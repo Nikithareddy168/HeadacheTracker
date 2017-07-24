@@ -1,16 +1,19 @@
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class MedicationReport implements Report{
 	private List<Medication> medList; 
 	private int frequency; 
+	
+	public MedicationReport(List<Medication>medList){
+		this.medList = medList; 
+	}
 
 	@Override
 	public String buildReport() {
 		StringBuilder medReport = new StringBuilder(); 
 		//medReport.append("Medication Report: "); 
-		for(Medication m : medList){
+		List<Medication>tempList = getMedList(); 
+		for(Medication m : tempList){
 			if(medReport.indexOf(m.getTreatmentName())<0){
 				medReport.append("\n" + m.getTreatmentName() + "\n"); 
 				medReport.append("Medication Class: "); 
@@ -21,7 +24,6 @@ public class MedicationReport implements Report{
 				medReport.append(getAverageEffectivity(m.getTreatmentName())+"\n");
 				medReport.append("Total Dose Taken: "); 
 				medReport.append(getFrequency() + "\n"); 
-				
 				//date range probably should be in interface since all reports need them
 			}
 		}
@@ -53,8 +55,10 @@ public class MedicationReport implements Report{
 		
 	@Override
 	public void printReport(String report) {
-		System.out.println("Detailed Medication Report: \n");
+		System.out.println("\nDetailed Medication Report:");
+		System.out.println("***************************");
 		System.out.println(report);
+		System.out.println("***************************");
 	}
 
 	public List<Medication> getMedList() {

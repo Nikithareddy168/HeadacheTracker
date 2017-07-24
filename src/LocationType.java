@@ -1,0 +1,4 @@
+
+public enum LocationType {
+	FRONTAL, TEMPORAL, OCCIPITAL, SUB_OCCIPITAL, OCCULAR
+}

@@ -1,15 +1,34 @@
 import java.util.*;
 
 
-public class Symptom implements Report{
+public class Symptom{
 	private List<String> symptoms; 
+		
+	public String getSymptom(int index){
+		return symptoms.get(index); 
+	}
+	
+	public List<String> getSymptomList(){
+		return symptoms; 
+	}
+
+	public String toString(){
+		List<String>temp = getSymptomList();
+		StringBuilder symptomSummary = new StringBuilder(); 
+		for(int i = 0; i < temp.size(); i++){
+			symptomSummary.append(temp.get(i)); 
+			if(i != temp.size()-1)
+				symptomSummary.append(", "); 
+		}
+		return symptomSummary.toString(); 
+	}
 	
 	public void addSymptom(String s){
 		this.symptoms.add(s); 
 	}
 	
 	public void addSymptom(DefaultSymptom s){
-		this.symptoms.add(toString(s)); 
+		this.symptoms.add(defaultToString(s)); 
 	}
 	
 	public void addSymptom(List<String> s){
@@ -23,27 +42,16 @@ public class Symptom implements Report{
 	
 	public Symptom(DefaultSymptom s){
 		this.symptoms = new ArrayList<String>(); 
-		this.symptoms.add(toString(s)); 
+		this.symptoms.add(defaultToString(s)); 
 	}
 	
 	public Symptom(List<String> s) {
 		this.symptoms = new ArrayList<String>(); 
 		this.symptoms.addAll(s); 
 	}
-
-	/*
-	@Override
-	public void getAll() {
-		System.lineSeparator(); 
-		for(int i = 0; i < symptoms.size(); i++){
-			System.out.print(symptoms.get(i));
-			if(i != symptoms.size()-1)
-				System.out.print(", ");
-		}
-		System.lineSeparator(); 
-	} */
 	
-	public String toString(DefaultSymptom s){
+	//Need to do this for every enum :(
+	public String defaultToString(DefaultSymptom s){
 		if(s == DefaultSymptom.Aura)
 			return "Aura"; 
 		else if(s == DefaultSymptom.Nausea)
@@ -67,5 +75,4 @@ public class Symptom implements Report{
 		else
 			return "N/A"; 
 	}
-
 }
