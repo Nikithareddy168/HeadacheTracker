@@ -9,13 +9,19 @@ public class PatientDataReport implements Report{
 		this.headacheList = headacheList; 
 	}
 	
+	public PatientDataReport() {
+	}
+
 	public List<Headache> getHeadacheList(){
 		return headacheList; 
 	}
 	
+	public void setHeadacheList(List<Headache>headacheList){
+		this.headacheList = headacheList; 
+	}
+	
 	@Override
 	public String buildReport() {
-		// TODO Auto-generated method stub
 		List<Headache>tempHL = getHeadacheList(); 
 		StringBuilder pdReport = new StringBuilder(); 
 		for(int i = 0; i < headacheList.size(); i++){
@@ -47,6 +53,8 @@ public class PatientDataReport implements Report{
 			pdReport.append(df.format(tempM.getTimeEffective()) + "\n"); 
 			pdReport.append("Triggers: "); 
 			pdReport.append(tempH.getTrigger().toString() + "\n"); 
+			pdReport.append("Selfhelp: "); 
+			pdReport.append(tempH.getSelfHelp().toString()); 
 		}
 		return pdReport.toString();
 	}

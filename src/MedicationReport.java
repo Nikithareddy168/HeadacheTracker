@@ -5,7 +5,12 @@ public class MedicationReport implements Report{
 	private int frequency; 
 	
 	public MedicationReport(List<Medication>medList){
-		this.medList = medList; 
+		this.medList = medList;
+		frequency = 0; 
+	}
+
+	public MedicationReport() {
+		frequency = 0; 
 	}
 
 	@Override

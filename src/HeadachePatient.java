@@ -1,22 +1,16 @@
 import java.util.List;
 
-public class HeadachePatient extends Patient <Headache>{
+public class HeadachePatient extends Patient <Headache,Medication>{
 	
-		public HeadachePatient(List<Headache>healthComposition) {
-			super(healthComposition);
-		}
-		public Double totalDuration = 0.0;
-		public float totalSeverity = 0;
-	
-		
-		public List<Headache> getHeadache() {
-			return super.getHealthComposition(); 
+		public HeadachePatient(List<Headache>healthComposition, List<Medication>treatmentComposition) {
+			super(healthComposition,treatmentComposition);
 		}
 		
 		public void setHeadache(List<Headache> headache) {
 			super.setHealthComposition(headache);
 		}
-		public int getSize(){
-		    return super.getHealthComposition().size(); 
+		
+		public void setMedication(List<Medication> medication){
+			super.setTreatmentComposition(medication);
 		}
 }

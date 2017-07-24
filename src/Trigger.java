@@ -23,21 +23,6 @@ public class Trigger {
         this.triggersList.add(defaulToString(t)); 
     }
     
-    /*
-    public String toString(){
-		StringBuilder triggerSummary = new StringBuilder(); 
-		for(int i = 0; i < triggersList.size(); i++){
-			locationSummary.append(getLocationType(i)); 
-			locationSummary.append("/"); 
-			locationSummary.append(getSidednessType(i)); 
-			if(i != locationType.size()-1)
-				locationSummary.append(", "); 
-			else
-				locationSummary.append(" "); 
-		}
-		return locationSummary.toString();
-	}*/
-    
     public String toString(){
     	StringBuilder triggerSummary = new StringBuilder(); 
     	for(int i = 0; i < triggersList.size(); i++){

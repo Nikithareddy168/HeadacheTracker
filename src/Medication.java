@@ -1,13 +1,10 @@
 import java.time.LocalTime;
-import java.util.ArrayList;
-import static java.time.temporal.ChronoUnit.MINUTES;
-import java.util.HashMap;
 
 public class Medication extends Treatment {
 
 	private String medClass; 
-	private String medicationName; 
 	private double doseTaken; 
+	//What were these initial for? 
 	private int initialPain; 
 	private int finalPain; 	
 	

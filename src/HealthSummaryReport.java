@@ -12,6 +12,10 @@ public class HealthSummaryReport implements Report{
 		this.headacheList = headacheList; 
 	}
 
+	public HealthSummaryReport() {
+	}
+
+
 	@Override
 	//Start, end, headache count, average severity, duration
 	public String buildReport() {
