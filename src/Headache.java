@@ -24,12 +24,12 @@ private Location location;
 private HeadacheType headacheType; 
 private Medication medication; 
 private Phase phase; 
-public float tseverity = 0;
+private Trigger trigger; 
 private static DecimalFormat df = new DecimalFormat(".##"); 
 
 
 public Headache(LocalDate date, LocalTime startTime, LocalTime endTime, Severity severity,
-		Location location, HeadacheType headacheType,Medication medication, Phase phase) {
+		Location location, HeadacheType headacheType,Medication medication, Phase phase, Trigger trigger) {
 	this.date = date; 
 	this.startTime = startTime; 
 	this.endTime = endTime; 
@@ -38,6 +38,11 @@ public Headache(LocalDate date, LocalTime startTime, LocalTime endTime, Severity
 	this.headacheType = headacheType; 
 	this.medication = medication; 
 	this.phase = phase; 
+	this.trigger = trigger; 
+}
+
+public Trigger getTrigger(){
+	return this.trigger; 
 }
 
 public Phase getPhase(){

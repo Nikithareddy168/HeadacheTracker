@@ -20,20 +20,26 @@ public class HeadacheApplication {
 		
 		SelfHelp sh = new SelfHelp("Yoga",LocalTime.of(13, 30),LocalTime.of(15, 45),Effectivity.DID_NOT_HELP); 
 		
-		//Create headache, severity, location, symptoms
+		//Create items required for headache constructor
+		//Severity and Location
 		Severity s1 = new Severity("stabbing",4); 
 		Severity s2 = new Severity("stabbing",8); 
 		Location l1 = new Location(LocationType.FRONTAL,SidednessType.LEFT_SIDE); 
-		
 		l1.add(LocationType.OCCIPITAL,SidednessType.RIGHT_SIDE); 
+		
+		//Symptom and Phases
 		Symptom sy1 = new Symptom(DefaultSymptom.Aura); 
 		sy1.addSymptom("Second symptom");
 		Phase phase1 = new Phase(PhaseType.CONCURRENT,sy1); 
 		Symptom sy2 = new Symptom("All smells"); 
 		phase1.addPhase(PhaseType.POST_DROME, sy2);
 		
-		Headache h1 = new Headache(LocalDate.now(),LocalTime.of(12,30),LocalTime.of(18, 30),s1,l1,HeadacheType.CLUSTER,m1,phase1); 
-		Headache h2 = new Headache(LocalDate.of(2017, 7, 29),LocalTime.of(12,30),LocalTime.of(19, 30),s2,l1,HeadacheType.CLUSTER,m2,phase1); 
+		//Triggers
+		Trigger t1 = new Trigger("Trigger1"); 
+		t1.addTrigger(DefaultTrigger.Alcohol);
+		
+		Headache h1 = new Headache(LocalDate.now(),LocalTime.of(12,30),LocalTime.of(18, 30),s1,l1,HeadacheType.CLUSTER,m1,phase1,t1); 
+		Headache h2 = new Headache(LocalDate.of(2017, 7, 29),LocalTime.of(12,30),LocalTime.of(19, 30),s2,l1,HeadacheType.CLUSTER,m2,phase1,t1); 
 		List<Headache>hList1 = new ArrayList<Headache>(); 
 		hList1.add(h1); 
 		hList1.add(h2); 

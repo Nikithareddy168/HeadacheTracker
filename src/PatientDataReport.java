@@ -45,6 +45,8 @@ public class PatientDataReport implements Report{
 			pdReport.append(df.format(tempM.getTimeTaken()) + "\n"); 
 			pdReport.append("Medication Effective: "); 
 			pdReport.append(df.format(tempM.getTimeEffective()) + "\n"); 
+			pdReport.append("Triggers: "); 
+			pdReport.append(tempH.getTrigger().toString() + "\n"); 
 		}
 		return pdReport.toString();
 	}
