@@ -1,17 +1,33 @@
 
-public enum Effectivity {
-	HELPED_A_LOT, HELPED_A_LITTLE, DID_NOT_HELP, MADE_IT_WORSE; 
+public class Effectivity {
+	private String effectivity;  
 	
-	public String toString(Effectivity e){
-		if(e == Effectivity.DID_NOT_HELP)
+	Effectivity(String effectivity){
+		this.setEffectivity(effectivity); 
+	}
+	
+	Effectivity(EffectivityType effectivity){
+		this.setEffectivity((defaultToString(effectivity))); 
+	}
+	
+	public String defaultToString(EffectivityType e){
+		if(e == EffectivityType.DID_NOT_HELP)
 			return "Did not help";
-		else if (e == Effectivity.HELPED_A_LITTLE)
+		else if (e == EffectivityType.HELPED_A_LITTLE)
 			return "Helped a little"; 
-		else if (e == Effectivity.HELPED_A_LOT)
+		else if (e == EffectivityType.HELPED_A_LOT)
 			return "Helped a lot"; 
-		else if (e == Effectivity.MADE_IT_WORSE)
+		else if (e == EffectivityType.MADE_IT_WORSE)
 			return "Made it worse"; 
 		else
 			return "N/A"; 
+	}
+
+	public String getEffectivity() {
+		return effectivity;
+	}
+
+	public void setEffectivity(String effectivity) {
+		this.effectivity = effectivity;
 	}
 }

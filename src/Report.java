@@ -1,4 +1,5 @@
 
 public interface Report {
-	public void getAll(); 
+	public String buildReport(); 
+	public void printReport(String report); 
 }

@@ -1,38 +1,28 @@
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.List;
-import java.util.Map;
 
-public class Patient {
-
-	private List<Headache> headache;
-	public Double totalDuration = 0.0;
-	public float totalSeverity = 0;
+public abstract class Patient<T,G> {
 	
+	protected List <T> healthComposition; 
+	protected List <G> treatmentComposition; 
 	
-	public Patient(List<Headache> headache) {
-		this.headache = headache;
+	public Patient(List<T> healthComposition, List<G> treatmentComposition) {
+		this.treatmentComposition = treatmentComposition; 
+		this.healthComposition = healthComposition; 
 	}
 	
-	public void getHeadacheInfo(){
-		List<Headache> hList = getHeadache(); 
-		for(Headache h : hList){
-			h.getAll();
-			totalDuration += h.getDuration();
-			totalSeverity += h.tseverity;
-			
-		}
+	public List<T> getHealthComposition() {
+		return healthComposition;
 	}
 	
-	public List<Headache> getHeadache() {
-		return headache;
+	public void setHealthComposition(List<T> healthComposition){
+		this.healthComposition = healthComposition; 
 	}
 	
-	public void setHeadache(List<Headache> headache) {
-		this.headache = headache;
+	public List<G> getTreatmentComposition(){
+		return treatmentComposition; 
 	}
-	public int getSize(){
-	    return headache.size();
+	
+	public void setTreatmentComposition(List<G> treatmentComposition){
+		this.treatmentComposition = treatmentComposition; 
 	}
-
 }

@@ -4,140 +4,89 @@ import java.time.LocalDate;
 
 import java.time.LocalTime;
 
-
-
 //Driver class for headache tracker application
-
 public class HeadacheApplication {
 
 	public static void main(String[] args){
-	
-	
-		//Treatments
 		
-		Treatment m = new Medication("MaxAlt", "triptan class", 2.0, LocalTime.of(12,50),LocalTime.of(15, 48),7, 2); 
+		//Should treatment abstract class instead hold a list instead of having it out here? 
+		//Create running list of medication and treatment (like a pill case) or
+		//	in the case of selfhelp, a running note of selfhelp methods
+		Medication m1 = new Medication("MaxAlt", "triptan class", 2.0, LocalTime.of(12,50),LocalTime.of(15, 50),7, 2); 
+		Medication m2 = new Medication("Advil", "acetominophen class", 4.0, LocalTime.of(14,55),LocalTime.of(18, 55),9, 1); 
+		Medication m3 = new Medication("MaxAlt", "triptan class", 2.0, LocalTime.of(11,50),LocalTime.of(15, 50),7, 2); 
+		List<Medication>medList = new ArrayList<Medication>();
+		medList.add(m1); 
+		medList.add(m2); 
+		medList.add(m3); 
+		Effectivity e1 = new Effectivity(EffectivityType.DID_NOT_HELP); 
+		Effectivity e2 = new Effectivity(EffectivityType.HELPED_A_LOT); 
+		SelfHelp sh1 = new SelfHelp("Yoga",LocalTime.of(13, 30),LocalTime.of(16, 30),e1); 
+		sh1.addSelfHelp("Stretching", e2);
+		sh1.addSelfHelp("Stretching", e1);
+		SelfHelp sh2 = new SelfHelp("Breathing",LocalTime.of(13, 30),LocalTime.of(16, 30),e1); 
+		sh2.addSelfHelp("Stretching", e2);
+		List<SelfHelp>selfHelpList = new ArrayList<SelfHelp>(); 
+		selfHelpList.add(sh1); 
+		selfHelpList.add(sh2); 
 		
+		//Create items required for headache constructor
+		//Severity and Location
+		Severity s1 = new Severity("stabbing",4); 
+		Severity s2 = new Severity("stabbing",8); 
+		Location l1 = new Location(LocationType.FRONTAL,SidednessType.LEFT_SIDE); 
+		l1.add(LocationType.OCCIPITAL,SidednessType.RIGHT_SIDE); 
 		
-		Treatment sh = new SelfHelp("Yoga",LocalTime.of(13, 30),LocalTime.of(15, 45),Effectivity.DID_NOT_HELP); 
+		//Symptom and Phases
+		Symptom sy1 = new Symptom(DefaultSymptom.Aura); 
+		sy1.addSymptom("Second symptom");
+		Phase phase1 = new Phase(PhaseType.CONCURRENT,sy1); 
+		Symptom sy2 = new Symptom("All smells"); 
+		phase1.addPhase(PhaseType.POST_DROME, sy2);
 		
-		List<Treatment> tList = new ArrayList <Treatment>(); 
+		//Triggers
+		Trigger t1 = new Trigger("Trigger1"); 
+		t1.addTrigger(DefaultTrigger.Alcohol);
 		
-		tList.add(m); 
+		//Compile into headaches
+		Headache h1 = new Headache(LocalDate.now(),LocalTime.of(12,30),LocalTime.of(18, 30),s1,l1,HeadacheType.CLUSTER,m1,phase1,t1,sh1); 
+		Headache h2 = new Headache(LocalDate.of(2017, 7, 29),LocalTime.of(12,30),LocalTime.of(19, 30),s2,l1,HeadacheType.CLUSTER,m2,phase1,t1,sh2); 
+		List<Headache>hList1 = new ArrayList<Headache>(); 
+		hList1.add(h1); 
+		hList1.add(h2); 
+				
 		
-		tList.add(sh); 
-		
-		
-		
-		//Symptoms
-		
-		//Example with single symptom, adding an additional symptom, or using an array to declare a list of symptoms
-		
-		Map<Phase,Symptom> symptoms = new HashMap<Phase,Symptom>(); 
-		
-		Symptom s1 = new Symptom("Sunlight"); 
-		
-		Symptom s2 = new Symptom(DefaultSymptom.LightSensitivity); 
-		
-		s2.addSymptom(DefaultSymptom.Aura); 
-		
-		List <String> exampleSymptoms = new ArrayList<>(Arrays.asList("sy1","sy2")); 
-		
-		Symptom s3 = new Symptom(exampleSymptoms); 
-		
-		symptoms.put(Phase.CONCURRENT,s1); 
-		
-		symptoms.put(Phase.POST_DROME, s2); 
-		
-		symptoms.put(Phase.PRO_DROME, s3); 
-		
-		
-		//severity
-		
-		Map<String, Integer> severity1 = new HashMap<String, Integer>(); 
-		
-		severity1.put("Medium grade", 5);
-		
-		
-		
-		
-		//SidednessType and painlocation
-		
-		SidednessType side1 = SidednessType.BILATERAL; 
-		
-		Location l1 = Location.FRONTAL; 
-		
-		Location l2 = Location.OCCIPITAL; 
-		
-		List<Location> painLocations1 = new ArrayList<>(Arrays.asList(l1,l2)); 
-		
-		List<Location> painLocations2 = new ArrayList<>(Arrays.asList(l1));
+		//Compile headaches into headache patients
+		//Then add list of patients to neurologist
+		HeadachePatient hp1 = new HeadachePatient(hList1,medList); 
+		List<HeadachePatient> hpList = new ArrayList<HeadachePatient>(); 
+		hpList.add(hp1); 
+		Neurologist neuro = new Neurologist(hpList); 
 		
 		
-		//triggers
-		
-		        Map<Trigger,String> triggerMap = new HashMap<Trigger,String>(); 
-		
-		        Trigger t1 = new Trigger("Other Trigger");
-		
-		        Trigger t2 = new Trigger(DefaultTrigger.CertainFoods);
-		
-		        triggerMap.put(t1, "<<Patient_Note>>");
-		
-		        triggerMap.put(t2, "Ice Cream");
-		
-		        
-		
-		//Headaches
-		
-		Headache h1 = new Headache(LocalDate.now(), LocalTime.of(12, 0), LocalTime.of(15, 30), severity1,
-		
-		painLocations1, side1, HeadacheType.MIGRAINE, triggerMap, symptoms,tList); 
-		
-		Headache h2 = new Headache(LocalDate.now(), LocalTime.of(11, 30), LocalTime.of(20, 0), severity1, painLocations2, SidednessType.BILATERAL, HeadacheType.TENSION, triggerMap, symptoms, tList );
-		
-		List <Headache> hList = new ArrayList <Headache>(); 
-		
-		hList.add(h1); 
-		
-		hList.add(h2);
-		
-		
-		Patient p1 = new Patient(hList); 
-		
-		p1.getHeadacheInfo();
-		
-		     
-		getSummaryReport(p1);  
-		
-		System.out.println("");
-		Medication med;
-		Medication.getMedSymmary();
-		System.out.println("");
-		System.out.println("Done!");
+		MedicationReport mr = new MedicationReport();
+		SelfHelpReport shr = new SelfHelpReport(); 
+		HealthSummaryReport hsr = new HealthSummaryReport(); 
+		PatientDataReport pdr = new PatientDataReport(); 
 
-	
-	
+		//Iterate through neurologist patients and print report for each
+		for(HeadachePatient hp : neuro.getPatientList()){
+			mr.setMedList(hp.getTreatmentComposition()); 
+			shr.setSelfHelp(selfHelpList);  //Had trouble making selfhelp clean
+			hsr.setHeadacheList(hp.getHealthComposition()); 
+			pdr.setHeadacheList(hp.getHealthComposition());
+		}
+					
+		//Strategy 
+		List<Report> reportList = new ArrayList<Report>(); 
+		reportList.add(mr); 
+		reportList.add(hsr); 
+		reportList.add(pdr); 
+		reportList.add(shr); 
+		for(Report r : reportList){
+			r.printReport(r.buildReport());
+		}
+		
 	}
-
-
-
-	public static void getSummaryReport(Patient p){
-	
-	        System.out.println("\n\tPrinting Summary Report..\n");
-	
-	        System.out.println("Headache occurences: " + p.getSize());
-	
-	        System.out.println("Average Severity: " + (p.totalSeverity/p.getSize()));
-	
-	        System.out.println("Average Duration: " + (p.totalDuration/p.getSize()));    
-	
-	        System.out.println("Done!");
-	
-	        
-	
-	    }
-
-
-
 
 }

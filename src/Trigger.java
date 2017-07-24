@@ -3,15 +3,15 @@ import java.util.List;
 import java.util.Map;
 
 
-public class Trigger implements Report {
+public class Trigger {
     private List<String> triggersList;
-    Map<Trigger,String> Trigger;
+    
     public void addTrigger(String t){
         this.triggersList.add(t); 
     }
     
     public void addTrigger(DefaultTrigger t){
-        this.triggersList.add(toString(t)); 
+        this.triggersList.add(defaulToString(t)); 
     }
     public Trigger(String t) {
         this.triggersList = new ArrayList<String>(); 
@@ -20,20 +20,22 @@ public class Trigger implements Report {
 
     public Trigger(DefaultTrigger t){
         this.triggersList = new ArrayList<String>(); 
-        this.triggersList.add(toString(t)); 
+        this.triggersList.add(defaulToString(t)); 
     }
     
-    public void getAll() {
-        System.lineSeparator(); 
-        for(int i = 0; i < triggersList.size(); i++){
-            System.out.print(triggersList.get(i));
-            if(i != triggersList.size()-1)
-                System.out.print("\n");
-        }
-        System.lineSeparator(); 
-    } 
+    public String toString(){
+    	StringBuilder triggerSummary = new StringBuilder(); 
+    	for(int i = 0; i < triggersList.size(); i++){
+    		triggerSummary.append(triggersList.get(i)); 
+    		if(i != triggersList.size()-1){
+    			triggerSummary.append(", "); 
+    		}
+    	}
+		return triggerSummary.toString();
+    }
+
         
-    public String toString(DefaultTrigger t){
+    public String defaulToString(DefaultTrigger t){
         if(t == DefaultTrigger.sleepCycleChanges)
             return "Sleep Cycle Changes"; 
         else if(t == DefaultTrigger.Scents)
