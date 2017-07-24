@@ -113,7 +113,7 @@ System.out.println();
 
 //Get Treatment info 
 
-getTreatmentInfo(); 
+//getTreatmentInfo(); 
 
 
 //Get Trigger Info
@@ -155,6 +155,7 @@ System.out.println("");
 
 
 //get all info from each treatment type
+/*
 
 public void getTreatmentInfo(){
 
@@ -166,7 +167,7 @@ t.getAll();
 
 }
 
-}
+}*/
 
 
 /* Are these useful? 

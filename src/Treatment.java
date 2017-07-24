@@ -1,12 +1,14 @@
 import java.time.*;
+import static java.time.temporal.ChronoUnit.MINUTES;
+
+import java.text.DecimalFormat;
 import java.time.format.DateTimeFormatter;
 
 //Abstract/Interface for selfhelp and medication classes
-public abstract class Treatment implements Report {
-
+//Selfhelp will be considered a type of treatment, so reporting will be the same
+public abstract class Treatment {
+	private static DecimalFormat df = new DecimalFormat(".##"); 
 	private String treatmentName; 
-	//Phase b/c says we could also track timeeffectivity for selfhelp, could possibly take start time and end time from medication and put it here as well
-	//Can discuss during next call
 	private LocalTime timeEffective; 
 	private LocalTime timeTaken; 
 
@@ -27,6 +29,11 @@ public abstract class Treatment implements Report {
 	
 	public LocalTime getTimeTaken(){
 		return timeTaken; 
+	}
+	
+	public double getTimeToEffective(){
+		double elapsedTime = ((double)getTimeTaken().until(getTimeEffective(),MINUTES))/60;	
+		return Double.valueOf(df.format(elapsedTime)); 
 	}
 	
 	//Return string of medication or selfhelp

@@ -31,6 +31,7 @@ public class Symptom implements Report{
 		this.symptoms.addAll(s); 
 	}
 
+	/*
 	@Override
 	public void getAll() {
 		System.lineSeparator(); 
@@ -40,7 +41,7 @@ public class Symptom implements Report{
 				System.out.print(", ");
 		}
 		System.lineSeparator(); 
-	} 
+	} */
 	
 	public String toString(DefaultSymptom s){
 		if(s == DefaultSymptom.Aura)

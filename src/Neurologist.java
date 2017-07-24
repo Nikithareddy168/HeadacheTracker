@@ -1,10 +1,10 @@
 import java.util.List;
 
-public class Neurologist implements HealthCareProfessional<HealthComposite>{
+public class Neurologist implements HealthCareProfessional<HeadachePatient>{
 
-	private List<HealthComposite> patientList;
+	private List<HeadachePatient> patientList;
 	
-	public Neurologist(List<HealthComposite> patientList) {
+	public Neurologist(List<HeadachePatient> patientList) {
 		this.patientList = patientList; 
 	}
 
@@ -15,7 +15,7 @@ public class Neurologist implements HealthCareProfessional<HealthComposite>{
 	}
 
 	@Override
-	public List<HealthComposite> getPatientList() {
+	public List<HeadachePatient> getPatientList() {
 		return patientList;
 	}
 
